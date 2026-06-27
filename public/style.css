@@ -1,0 +1,479 @@
+/* ================================
+   CSS Custom Properties
+   ================================ */
+:root {
+    /* Dark palette */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: #1a1a2e;
+    --bg-card-hover: #1f1f35;
+
+    /* Accent gradient */
+    --accent-1: #6c5ce7;
+    --accent-2: #a855f7;
+    --accent-3: #ec4899;
+
+    /* Text */
+    --text-primary: #f0f0f5;
+    --text-secondary: #9898b0;
+    --text-muted: #5a5a72;
+
+    /* Category colors */
+    --cat-electronics: #6c5ce7;
+    --cat-books: #00b894;
+    --cat-fashion: #e17055;
+    --cat-sports: #0984e3;
+    --cat-home: #fdcb6e;
+    --cat-beauty: #e84393;
+    --cat-toys: #00cec9;
+
+    /* Misc */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 40px rgba(108, 92, 231, 0.15);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 100px;
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================
+   Reset & Base
+   ================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle background mesh */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% 0%, rgba(108, 92, 231, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(236, 72, 153, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ================================
+   Header
+   ================================ */
+.header {
+    position: relative;
+    padding: 48px 24px 40px;
+    text-align: center;
+    z-index: 1;
+    border-bottom: 1px solid var(--border-subtle);
+    background: linear-gradient(180deg, rgba(108, 92, 231, 0.06) 0%, transparent 100%);
+}
+
+.header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-icon {
+    -webkit-text-fill-color: initial;
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* ================================
+   Main Container
+   ================================ */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+}
+
+/* ================================
+   Section Title
+   ================================ */
+.section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+/* ================================
+   Category Filter Pills
+   ================================ */
+.filter-section {
+    margin-bottom: 32px;
+}
+
+.category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill {
+    padding: 8px 18px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.pill:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+}
+
+.pill.active {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
+}
+
+/* ================================
+   Stats Bar
+   ================================ */
+.stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding: 12px 18px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ================================
+   Product Grid
+   ================================ */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* ================================
+   Product Card
+   ================================ */
+.card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    transition: all var(--transition-smooth);
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(108, 92, 231, 0.2);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Card header with category badge */
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Category-specific badge colors */
+.badge-electronics { background: rgba(108, 92, 231, 0.15); color: var(--cat-electronics); }
+.badge-books { background: rgba(0, 184, 148, 0.15); color: var(--cat-books); }
+.badge-fashion { background: rgba(225, 112, 85, 0.15); color: var(--cat-fashion); }
+.badge-sports { background: rgba(9, 132, 227, 0.15); color: var(--cat-sports); }
+.badge-home { background: rgba(253, 203, 110, 0.15); color: var(--cat-home); }
+.badge-beauty { background: rgba(232, 67, 147, 0.15); color: var(--cat-beauty); }
+.badge-toys { background: rgba(0, 206, 201, 0.15); color: var(--cat-toys); }
+
+/* Card price */
+.card-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.card-price .currency {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Card footer */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.card-id {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.card-date {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* ================================
+   Card Appear Animation
+   ================================ */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-animated {
+    animation: cardAppear 0.4s ease forwards;
+    opacity: 0;
+}
+
+/* ================================
+   Loading Skeleton
+   ================================ */
+.skeleton-grid {
+    margin-top: 20px;
+}
+
+.skeleton-card {
+    background: var(--bg-card) !important;
+}
+
+.skeleton-line {
+    height: 14px;
+    border-radius: 6px;
+    background: linear-gradient(90deg,
+        rgba(255,255,255,0.04) 25%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.04) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    margin-bottom: 12px;
+}
+
+.skeleton-line.w40 { width: 40%; }
+.skeleton-line.w60 { width: 60%; }
+.skeleton-line.w80 { width: 80%; height: 22px; }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ================================
+   Pagination Bar
+   ================================ */
+.pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    padding: 16px 0;
+}
+
+.btn-page {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(168, 85, 247, 0.1));
+    color: var(--accent-2);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    min-width: 140px;
+    justify-content: center;
+}
+
+.btn-page:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 8px 32px rgba(108, 92, 231, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-page:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+.btn-arrow {
+    font-size: 1.1rem;
+    transition: transform var(--transition-fast);
+}
+
+.btn-prev:hover:not(:disabled) .btn-arrow {
+    transform: translateX(-3px);
+}
+
+.btn-next:hover:not(:disabled) .btn-arrow {
+    transform: translateX(3px);
+}
+
+.page-indicator {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    padding: 8px 22px;
+    font-variant-numeric: tabular-nums;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 640px) {
+    .header {
+        padding: 32px 16px 28px;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .container {
+        padding: 20px 16px 60px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-pills {
+        gap: 8px;
+    }
+
+    .pill {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+
+    .pagination-bar {
+        gap: 12px;
+    }
+
+    .btn-page {
+        padding: 10px 18px;
+        font-size: 0.82rem;
+        min-width: 110px;
+    }
+
+    .btn-text {
+        display: none;
+    }
+}

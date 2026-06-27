@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse 200,000+ products with blazing-fast cursor pagination" />
+
+    <title>Product Catalog</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="logo">
+                <span class="logo-icon">⚡</span> Product Catalog
+            </h1>
+            <p class="subtitle">Browse 200k+ products with cursor pagination</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Category Filter Pills -->
+        <section class="filter-section" id="filterSection">
+            <h2 class="section-title">Categories</h2>
+            <div class="category-pills" id="categoryPills">
+                <button class="pill active" data-category="">All</button>
+                <button class="pill" data-category="Electronics">⚡ Electronics</button>
+                <button class="pill" data-category="Books">📚 Books</button>
+                <button class="pill" data-category="Fashion">👗 Fashion</button>
+                <button class="pill" data-category="Sports">🏅 Sports</button>
+                <button class="pill" data-category="Home">🏠 Home</button>
+                <button class="pill" data-category="Beauty">✨ Beauty</button>
+                <button class="pill" data-category="Toys">🧸 Toys</button>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar" id="statsBar">
+            <span id="productCount">Loading products...</span>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="products"></div>
+
+        <!-- Loading Skeleton -->
+        <div class="product-grid skeleton-grid" id="skeleton" style="display: none;">
+            <div class="card skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+            <div class="card skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+            <div class="card skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+            <div class="card skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+            <div class="card skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+            <div class="card skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+        </div>
+
+        <!-- Pagination Bar -->
+        <div class="pagination-bar" id="paginationBar">
+            <button class="btn-page btn-prev" id="prevBtn" disabled>
+                <span class="btn-arrow">←</span>
+                <span class="btn-text">Previous</span>
+            </button>
+
+            <span class="page-indicator" id="pageIndicator">Page 1</span>
+
+            <button class="btn-page btn-next" id="nextBtn" disabled>
+                <span class="btn-text">Next</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
